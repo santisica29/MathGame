@@ -163,7 +163,7 @@
                     Console.ReadLine();
                 }
             }
-            Helpers.AddToHistory(score, "addition");
+            Helpers.AddToHistory(score, "Addition");
 
         }
 

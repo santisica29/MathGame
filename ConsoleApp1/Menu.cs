@@ -3,7 +3,6 @@
     public class Menu
     {
         GameEngine engine = new();
-        Helpers helpers = new Helpers();
         public void ShowMenu(string name, DateTime date)
         {
             Console.WriteLine("---------------------------------------------");

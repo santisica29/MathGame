@@ -1,8 +1,11 @@
-﻿namespace ConsoleApp1
+﻿using ConsoleApp1.Models;
+
+namespace ConsoleApp1
 {
     internal class Helpers
     {
-        static List<string> games = new();
+        static List<Game> games = new();
+
         internal static string GetName()
         {
             Console.WriteLine("Please type your name");
@@ -25,7 +28,7 @@
             Console.WriteLine("--------------------------");
             foreach (var game in games)
             {
-                Console.WriteLine($"{game}");
+                Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
             }
 
             Console.WriteLine("--------------------------\n");
@@ -36,7 +39,12 @@
 
         internal static void AddToHistory(int score, string typeGame)
         {
-            games.Add($"{DateTime.Now} - {typeGame}: Score = {score}");
+            games.Add(new Game
+            {
+                Date = DateTime.Now,
+                Score = score,
+                Type = typeGame,
+            });
             // char.ToUpper(typeGame[0])+typeGame.Substring(1) makes typegame first letter string uppercase
         }
 
