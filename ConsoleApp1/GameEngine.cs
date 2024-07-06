@@ -1,173 +1,172 @@
-﻿namespace ConsoleApp1
+﻿namespace ConsoleApp1;
+
+internal class GameEngine
 {
-    internal class GameEngine
+    internal void DivisionGame(string message)
     {
-        internal void DivisionGame(string message)
+        var score = 0;
+
+        for (int i = 0; i < 5; i++)
         {
-            var score = 0;
-
-            for (int i = 0; i < 5; i++)
-            {
-                Console.Clear();
-                Console.WriteLine(message);
-
-                var divisionNumbers = Helpers.GetDivisionNumbers();
-                var firstNumber = divisionNumbers[0];
-                var secondNumber = divisionNumbers[1];
-
-                Console.WriteLine($"{firstNumber} / {secondNumber}");
-                var result = Console.ReadLine();
-
-                if (int.Parse(result) == firstNumber / secondNumber)
-                {
-                    Console.WriteLine($"Your answer was correct. Type any key for the next question.");
-                    score++;
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine($"Your answer was incorrect.");
-                    Console.ReadLine();
-                }
-
-                if (i == 4)
-                {
-                    Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                    Console.ReadLine();
-                }
-            }
-
-            Helpers.AddToHistory(score, "Division");
-
-        }
-        internal void MultiplicationGame(string message)
-        {
+            Console.Clear();
             Console.WriteLine(message);
 
-            var random = new Random();
-            var score = 0;
+            var divisionNumbers = Helpers.GetDivisionNumbers();
+            var firstNumber = divisionNumbers[0];
+            var secondNumber = divisionNumbers[1];
 
-            int firstNumber;
-            int secondNumber;
+            Console.WriteLine($"{firstNumber} / {secondNumber}");
+            var result = Console.ReadLine();
 
-            for (int i = 0; i < 5; i++)
+            if (int.Parse(result) == firstNumber / secondNumber)
             {
-                Console.Clear();
-                Console.WriteLine(message);
-
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
-
-                Console.WriteLine($"{firstNumber} * {secondNumber}");
-                var result = Console.ReadLine();
-
-                if (int.Parse(result) == firstNumber * secondNumber)
-                {
-                    Console.WriteLine($"Your answer was correct. Type any key for the next question.");
-                    score++;
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine($"Your answer was incorrect.");
-                    Console.ReadLine();
-                }
-
-                if (i == 4)
-                {
-                    Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                    Console.ReadLine();
-                }
+                Console.WriteLine($"Your answer was correct. Type any key for the next question.");
+                score++;
+                Console.ReadLine();
             }
-            Helpers.AddToHistory(score, "Multiplication");
-
-        }
-        internal void SubtractionGame(string message)
-        {
-            Console.WriteLine(message);
-
-            var random = new Random();
-            var score = 0;
-
-            int firstNumber;
-            int secondNumber;
-
-            for (int i = 0; i < 5; i++)
+            else
             {
-                Console.Clear();
-                Console.WriteLine(message);
-
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
-
-                Console.WriteLine($"{firstNumber} - {secondNumber}");
-                var result = Console.ReadLine();
-
-                if (int.Parse(result) == firstNumber - secondNumber)
-                {
-                    Console.WriteLine($"Your answer was correct. Type any key for the next question.");
-                    score++;
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine($"Your answer was incorrect.");
-                    Console.ReadLine();
-                }
-
-                if (i == 4)
-                {
-                    Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                    Console.ReadLine();
-                }
+                Console.WriteLine($"Your answer was incorrect.");
+                Console.ReadLine();
             }
-            Helpers.AddToHistory(score, "Substraction");
 
-        }
-        internal void AdditionGame(string message)
-        {
-            Console.WriteLine(message);
-
-            var random = new Random();
-            var score = 0;
-
-            int firstNumber;
-            int secondNumber;
-
-            for (int i = 0; i < 5; i++)
+            if (i == 4)
             {
-                Console.Clear();
-                Console.WriteLine(message);
-
-                firstNumber = random.Next(1, 9);
-                secondNumber = random.Next(1, 9);
-
-                Console.WriteLine($"{firstNumber} + {secondNumber}");
-                var result = Console.ReadLine();
-
-                if (int.Parse(result) == firstNumber + secondNumber)
-                {
-                    Console.WriteLine($"Your answer was correct. Type any key for the next question.");
-                    score++;
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Console.WriteLine($"Your answer was incorrect.");
-                    Console.ReadLine();
-                }
-
-                if (i == 4)
-                {
-                    Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                    Console.ReadLine();
-                }
+                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+                Console.ReadLine();
             }
-            Helpers.AddToHistory(score, "Addition");
-
         }
 
-        // internal accesibilty means that you can access the class with their methods from anywhere inside the project
-        // keep in mind a solution can have many projects
+        Helpers.AddToHistory(score, "Division");
+
     }
+    internal void MultiplicationGame(string message)
+    {
+        Console.WriteLine(message);
+
+        var random = new Random();
+        var score = 0;
+
+        int firstNumber;
+        int secondNumber;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            Console.WriteLine(message);
+
+            firstNumber = random.Next(1, 9);
+            secondNumber = random.Next(1, 9);
+
+            Console.WriteLine($"{firstNumber} * {secondNumber}");
+            var result = Console.ReadLine();
+
+            if (int.Parse(result) == firstNumber * secondNumber)
+            {
+                Console.WriteLine($"Your answer was correct. Type any key for the next question.");
+                score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Your answer was incorrect.");
+                Console.ReadLine();
+            }
+
+            if (i == 4)
+            {
+                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+                Console.ReadLine();
+            }
+        }
+        Helpers.AddToHistory(score, "Multiplication");
+
+    }
+    internal void SubtractionGame(string message)
+    {
+        Console.WriteLine(message);
+
+        var random = new Random();
+        var score = 0;
+
+        int firstNumber;
+        int secondNumber;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            Console.WriteLine(message);
+
+            firstNumber = random.Next(1, 9);
+            secondNumber = random.Next(1, 9);
+
+            Console.WriteLine($"{firstNumber} - {secondNumber}");
+            var result = Console.ReadLine();
+
+            if (int.Parse(result) == firstNumber - secondNumber)
+            {
+                Console.WriteLine($"Your answer was correct. Type any key for the next question.");
+                score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Your answer was incorrect.");
+                Console.ReadLine();
+            }
+
+            if (i == 4)
+            {
+                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+                Console.ReadLine();
+            }
+        }
+        Helpers.AddToHistory(score, "Substraction");
+
+    }
+    internal void AdditionGame(string message)
+    {
+        Console.WriteLine(message);
+
+        var random = new Random();
+        var score = 0;
+
+        int firstNumber;
+        int secondNumber;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Clear();
+            Console.WriteLine(message);
+
+            firstNumber = random.Next(1, 9);
+            secondNumber = random.Next(1, 9);
+
+            Console.WriteLine($"{firstNumber} + {secondNumber}");
+            var result = Console.ReadLine();
+
+            if (int.Parse(result) == firstNumber + secondNumber)
+            {
+                Console.WriteLine($"Your answer was correct. Type any key for the next question.");
+                score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Your answer was incorrect.");
+                Console.ReadLine();
+            }
+
+            if (i == 4)
+            {
+                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
+                Console.ReadLine();
+            }
+        }
+        Helpers.AddToHistory(score, "Addition");
+
+    }
+
+    // internal accesibilty means that you can access the class with their methods from anywhere inside the project
+    // keep in mind a solution can have many projects
 }
