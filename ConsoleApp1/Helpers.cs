@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.Models;
+using static ConsoleApp1.Models.Game;
 
 namespace ConsoleApp1;
 
@@ -37,7 +38,7 @@ internal class Helpers
 
     }
 
-    internal static void AddToHistory(int score, string typeGame)
+    internal static void AddToHistory(int score, GameType typeGame)
     {
         games.Add(new Game
         {

@@ -1,4 +1,7 @@
-﻿namespace ConsoleApp1;
+﻿using ConsoleApp1.Models;
+using static ConsoleApp1.Models.Game;
+
+namespace ConsoleApp1;
 
 internal class GameEngine
 {
@@ -37,7 +40,7 @@ internal class GameEngine
             }
         }
 
-        Helpers.AddToHistory(score, "Division");
+        Helpers.AddToHistory(score, GameType.Division);
 
     }
     internal void MultiplicationGame(string message)
@@ -79,7 +82,7 @@ internal class GameEngine
                 Console.ReadLine();
             }
         }
-        Helpers.AddToHistory(score, "Multiplication");
+        Helpers.AddToHistory(score, GameType.Multiplication);
 
     }
     internal void SubtractionGame(string message)
@@ -121,7 +124,7 @@ internal class GameEngine
                 Console.ReadLine();
             }
         }
-        Helpers.AddToHistory(score, "Substraction");
+        Helpers.AddToHistory(score, GameType.Substraction);
 
     }
     internal void AdditionGame(string message)
@@ -163,7 +166,7 @@ internal class GameEngine
                 Console.ReadLine();
             }
         }
-        Helpers.AddToHistory(score, "Addition");
+        Helpers.AddToHistory(score, GameType.Addition);
 
     }
 
