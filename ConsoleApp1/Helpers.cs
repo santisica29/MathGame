@@ -5,7 +5,22 @@ namespace ConsoleApp1;
 
 internal class Helpers
 {
-    static List<Game> games = new();
+    static List<Game> games = new()
+    {
+        new Game { Date = DateTime.Now.AddDays(1), Type = GameType.Addition, Score = 5 },
+        new Game { Date = DateTime.Now.AddDays(2), Type = GameType.Multiplication, Score = 4 },
+        new Game { Date = DateTime.Now.AddDays(3), Type = GameType.Division, Score = 4 },
+        new Game { Date = DateTime.Now.AddDays(4), Type = GameType.Substraction, Score = 3 },
+        new Game { Date = DateTime.Now.AddDays(5), Type = GameType.Addition, Score = 1 },
+        new Game { Date = DateTime.Now.AddDays(6), Type = GameType.Multiplication, Score = 2 },
+        new Game { Date = DateTime.Now.AddDays(7), Type = GameType.Division, Score = 3 },
+        new Game { Date = DateTime.Now.AddDays(8), Type = GameType.Substraction, Score = 4 },
+        new Game { Date = DateTime.Now.AddDays(9), Type = GameType.Addition, Score = 4 },
+        new Game { Date = DateTime.Now.AddDays(10), Type = GameType.Multiplication, Score = 1 },
+        new Game { Date = DateTime.Now.AddDays(11), Type = GameType.Substraction, Score = 0 },
+        new Game { Date = DateTime.Now.AddDays(12), Type = GameType.Division, Score = 2 },
+        new Game { Date = DateTime.Now.AddDays(13), Type = GameType.Substraction, Score = 5 },
+    };
 
     internal static string GetName()
     {
@@ -17,7 +32,9 @@ internal class Helpers
 
    internal static void ViewPrevGames()
     {
-        if (games.Count == 0)
+        var gamesToShow = games.OrderByDescending(x => x.Score);
+
+        if (gamesToShow.Count() == 0)
         {
             Console.WriteLine("There are no games recorded.");
             Console.ReadLine();
@@ -27,7 +44,7 @@ internal class Helpers
         Console.Clear();
         Console.WriteLine("Games History");
         Console.WriteLine("--------------------------");
-        foreach (var game in games)
+        foreach (var game in gamesToShow)
         {
             Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
         }
