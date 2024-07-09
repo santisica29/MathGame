@@ -19,7 +19,10 @@ internal class GameEngine
             var secondNumber = divisionNumbers[1];
 
             Console.WriteLine($"{firstNumber} / {secondNumber}");
+
             var result = Console.ReadLine();
+
+            result = Helpers.ValidateResult(result);
 
             if (int.Parse(result) == firstNumber / secondNumber)
             {
@@ -64,6 +67,8 @@ internal class GameEngine
             Console.WriteLine($"{firstNumber} * {secondNumber}");
             var result = Console.ReadLine();
 
+            result = Helpers.ValidateResult(result);
+
             if (int.Parse(result) == firstNumber * secondNumber)
             {
                 Console.WriteLine($"Your answer was correct. Type any key for the next question.");
@@ -106,6 +111,8 @@ internal class GameEngine
             Console.WriteLine($"{firstNumber} - {secondNumber}");
             var result = Console.ReadLine();
 
+            result = Helpers.ValidateResult(result);
+
             if (int.Parse(result) == firstNumber - secondNumber)
             {
                 Console.WriteLine($"Your answer was correct. Type any key for the next question.");
@@ -147,6 +154,8 @@ internal class GameEngine
 
             Console.WriteLine($"{firstNumber} + {secondNumber}");
             var result = Console.ReadLine();
+
+            result = Helpers.ValidateResult(result);
 
             if (int.Parse(result) == firstNumber + secondNumber)
             {

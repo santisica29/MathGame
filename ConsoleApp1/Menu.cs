@@ -4,6 +4,7 @@ public class Menu
     GameEngine engine = new();
     public void ShowMenu(string name, DateTime date)
     {
+        Console.Clear();
         Console.WriteLine("---------------------------------------------");
         Console.WriteLine($"Hello {name}. It's {date}. This is your math's game.");
         Console.WriteLine("\n");

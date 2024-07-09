@@ -25,7 +25,15 @@ internal class Helpers
     internal static string GetName()
     {
         Console.WriteLine("Please type your name");
+
         var name = Console.ReadLine();
+
+        while (string.IsNullOrEmpty(name))
+        {
+            Console.WriteLine("Enter a name please.\n");
+            name = Console.ReadLine();
+        }
+
         return name;
     }
 
@@ -84,6 +92,16 @@ internal class Helpers
         result[0] = firstNumber;
         result[1] = secondNumber;
 
+        return result;
+    }
+
+    internal static string? ValidateResult(string? result)
+    {
+        while (string.IsNullOrEmpty(result) || !Int32.TryParse(result, out _))
+        {
+            Console.WriteLine("Your answer needs to be a number. Try again.");
+            result = Console.ReadLine();
+        }
         return result;
     }
 }
