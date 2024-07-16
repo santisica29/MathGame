@@ -38,7 +38,7 @@ internal class Helpers
     }
 
 
-   internal static void ViewPrevGames()
+    internal static void ViewPrevGames()
     {
         var gamesToShow = games.OrderByDescending(x => x.Score);
 
@@ -93,6 +93,37 @@ internal class Helpers
         result[1] = secondNumber;
 
         return result;
+    }
+
+    internal static int[] GetRandomNumbers(string gameDifficulty)
+    {
+        var numbers = new int[2];
+
+        var random = new Random();
+
+        int firstNumber = 0;
+        int secondNumber = 0;
+
+        if (string.Compare(gameDifficulty, GameDifficulty.Easy.ToString(),StringComparison.OrdinalIgnoreCase) == 0)
+        {
+            firstNumber = random.Next(1, 9);
+            secondNumber = random.Next(1, 9);
+        }
+        else if (string.Equals(gameDifficulty,GameDifficulty.Medium.ToString(), StringComparison.OrdinalIgnoreCase))
+        {
+            firstNumber = random.Next(1, 50);
+            secondNumber = random.Next(1, 50);
+        }
+        else if (StringComparer.OrdinalIgnoreCase.Equals(gameDifficulty, GameDifficulty.Hard.ToString()))
+        {
+            firstNumber = random.Next(1, 100);
+            secondNumber = random.Next(1, 100);
+        }
+
+        numbers[0] = firstNumber;
+        numbers[1] = secondNumber;
+
+        return numbers;
     }
 
     internal static string? ValidateResult(string? result)

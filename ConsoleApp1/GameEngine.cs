@@ -97,8 +97,12 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
+        Console.WriteLine("Choose the difficulty");
+        var difficulty = Console.ReadLine();
+        var numbers = Helpers.GetRandomNumbers(difficulty);
+
+        int firstNumber = numbers[0];
+        int secondNumber = numbers[1];
 
         for (int i = 0; i < 5; i++)
         {
