@@ -12,6 +12,7 @@ internal class Game
     internal int Score { get; set; }
     internal GameType Type { get; set; }
     internal GameDifficulty Difficulty { get; set; }
+    internal TimeSpan Time { get; set; }
 
     internal enum GameType
     {

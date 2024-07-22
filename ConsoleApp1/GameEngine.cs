@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.Models;
+using System.Diagnostics;
 using static ConsoleApp1.Models.Game;
 
 namespace ConsoleApp1;
@@ -7,6 +8,8 @@ internal class GameEngine
 {
     internal void DivisionGame(string message)
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
         var score = 0;
 
         for (int i = 0; i < 5; i++)
@@ -35,19 +38,22 @@ internal class GameEngine
                 Console.WriteLine($"Your answer was incorrect.");
                 Console.ReadLine();
             }
-
-            if (i == 4)
-            {
-                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                Console.ReadLine();
-            }
         }
+        
+        sw.Stop();
+        TimeSpan timeToCompletion = sw.Elapsed;
+        string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
 
-        Helpers.AddToHistory(score, GameType.Division);
+        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
+        Console.ReadLine();
+
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
 
     }
     internal void MultiplicationGame(string message)
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
         Console.WriteLine(message);
 
         var random = new Random();
@@ -82,17 +88,22 @@ internal class GameEngine
                 Console.ReadLine();
             }
 
-            if (i == 4)
-            {
-                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                Console.ReadLine();
-            }
         }
-        Helpers.AddToHistory(score, GameType.Multiplication);
+
+        sw.Stop();
+        TimeSpan timeToCompletion = sw.Elapsed;
+        string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
+
+        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
+        Console.ReadLine();
+
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
 
     }
     internal void SubtractionGame(string message)
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
         Console.WriteLine(message);
 
         var random = new Random();
@@ -127,17 +138,22 @@ internal class GameEngine
                 Console.ReadLine();
             }
 
-            if (i == 4)
-            {
-                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                Console.ReadLine();
-            }
         }
-        Helpers.AddToHistory(score, GameType.Substraction);
+
+        sw.Stop();
+        TimeSpan timeToCompletion = sw.Elapsed;
+        string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
+
+        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
+        Console.ReadLine();
+
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
 
     }
     internal void AdditionGame(string message)
     {
+        Stopwatch sw = Stopwatch.StartNew();
+
         Console.WriteLine(message);
 
         var random = new Random();
@@ -172,14 +188,16 @@ internal class GameEngine
                 Console.ReadLine();
             }
 
-            if (i == 4)
-            {
-                Console.WriteLine($"Game over. Your final score is {score}. Press any key to go back to the main menu.");
-                Console.ReadLine();
-            }
         }
-        Helpers.AddToHistory(score, GameType.Addition);
 
+        sw.Stop();
+        TimeSpan timeToCompletion = sw.Elapsed;
+        string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
+
+        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
+        Console.ReadLine();
+
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
     }
 
     // internal accesibilty means that you can access the class with their methods from anywhere inside the project

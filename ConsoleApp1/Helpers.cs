@@ -54,7 +54,9 @@ internal class Helpers
         Console.WriteLine("--------------------------");
         foreach (var game in gamesToShow)
         {
-            Console.WriteLine($"{game.Date} - {game.Type}: {game.Score} pts");
+            string time = Helpers.FormatTimeSpanToStr(game.Time);
+
+            Console.WriteLine($"{game.Date}: {time} - {game.Type}: {game.Score} pts");
         }
 
         Console.WriteLine("--------------------------\n");
@@ -63,13 +65,14 @@ internal class Helpers
 
     }
 
-    internal static void AddToHistory(int score, GameType typeGame)
+    internal static void AddToHistory(int score, GameType typeGame, TimeSpan time)
     {
         games.Add(new Game
         {
             Date = DateTime.Now,
             Score = score,
             Type = typeGame,
+            Time = time
         });
         // char.ToUpper(typeGame[0])+typeGame.Substring(1) makes typegame first letter string uppercase
     }
@@ -160,5 +163,13 @@ internal class Helpers
         }
 
         return diff;
+    }
+
+    internal static string FormatTimeSpanToStr(TimeSpan ts)
+    {
+        string timeInString = String.Format("({0:0} min - {1:0} sec)",
+            (int)ts.Minutes, ts.Seconds);
+
+        return timeInString;
     }
 }
