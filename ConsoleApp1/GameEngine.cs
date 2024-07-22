@@ -53,16 +53,17 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
+        var difficulty = Helpers.GetGameDifficulty();
 
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var numbers = Helpers.GetRandomNumbers(difficulty);
+
+            int firstNumber = numbers[0];
+            int secondNumber = numbers[1];
 
             Console.WriteLine($"{firstNumber} * {secondNumber}");
             var result = Console.ReadLine();
@@ -97,20 +98,17 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        Console.WriteLine("Choose the difficulty");
-        var difficulty = Console.ReadLine();
-        var numbers = Helpers.GetRandomNumbers(difficulty);
-
-        int firstNumber = numbers[0];
-        int secondNumber = numbers[1];
+        var difficulty = Helpers.GetGameDifficulty();
 
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var numbers = Helpers.GetRandomNumbers(difficulty);
+
+            int firstNumber = numbers[0];
+            int secondNumber = numbers[1];
 
             Console.WriteLine($"{firstNumber} - {secondNumber}");
             var result = Console.ReadLine();
@@ -145,16 +143,17 @@ internal class GameEngine
         var random = new Random();
         var score = 0;
 
-        int firstNumber;
-        int secondNumber;
+        var difficulty = Helpers.GetGameDifficulty();
 
         for (int i = 0; i < 5; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
 
-            firstNumber = random.Next(1, 9);
-            secondNumber = random.Next(1, 9);
+            var numbers = Helpers.GetRandomNumbers(difficulty);
+
+            int firstNumber = numbers[0];
+            int secondNumber = numbers[1];
 
             Console.WriteLine($"{firstNumber} + {secondNumber}");
             var result = Console.ReadLine();

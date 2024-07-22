@@ -135,4 +135,30 @@ internal class Helpers
         }
         return result;
     }
+
+    internal static string GetGameDifficulty()
+    {
+        bool x = false;
+        string diff = "";
+
+        while (x == false)
+        {
+            Console.Clear();
+            Console.WriteLine("Choose a difficulty: \n\nEasy - Medium - Hard\n");
+
+            diff = Console.ReadLine().ToLower();
+
+            if (diff == "easy" || diff == "medium" || diff == "hard")
+            {
+                x = true;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Try again.");
+                Console.ReadLine();
+            }
+        }
+
+        return diff;
+    }
 }
