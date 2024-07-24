@@ -83,7 +83,7 @@ internal class Helpers
         Console.WriteLine($"Game over. Your final score is {score}/{numOfQ}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
         Console.ReadLine();
     }
-    
+
 
     internal static int[] GetDivisionNumbers()
     {
@@ -205,4 +205,46 @@ internal class Helpers
 
         return int.Parse(result);
     }
+
+    internal static int GetResultOfOperation(int n1, int n2, char op)
+    {
+        if (op == '+')
+            return n1 + n2;
+
+        if (op == '-')
+            return n1 - n2;
+
+        if (op == '/')
+            return n1 / n2;
+
+        return n1 * n2;
+    }
+
+    internal static char GetRandomTypeOfGame()
+    {
+        var r = new Random();
+        var typeOfGame = r.Next(1, 5);
+        char op = 'a';
+
+        switch (typeOfGame)
+        {
+            case 1:
+                op = '*';
+                break;
+            case 2:
+                op = '+';
+                break;
+            case 3:
+                op = '-';
+                break;
+            case 4:
+                op = '/';
+                break;
+            default:
+                break;
+        }
+
+        return op;
+    }
+    
 }

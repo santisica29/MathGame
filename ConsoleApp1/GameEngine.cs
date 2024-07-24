@@ -6,6 +6,55 @@ namespace ConsoleApp1;
 
 internal class GameEngine
 {
+    internal void RandomGame(string message)
+    {
+        Stopwatch sw = Stopwatch.StartNew();
+
+        Console.WriteLine(message);
+
+        var score = 0;
+
+        var difficulty = Helpers.GetGameDifficulty();
+        int numOfQuestions = Helpers.GetNumberOfQuestions();
+
+        for (int i = 0; i < numOfQuestions; i++)
+        {
+            Console.Clear();
+            Console.WriteLine(message);
+            
+            char op = Helpers.GetRandomTypeOfGame();
+
+            var numbers = Helpers.GetRandomNumbers(difficulty);
+
+            int firstNumber = numbers[0];
+            int secondNumber = numbers[1];
+
+            Console.WriteLine($"{firstNumber} {op} {secondNumber}");
+            var result = Console.ReadLine();
+
+            result = Helpers.ValidateResult(result);
+
+            if (int.Parse(result) == Helpers.GetResultOfOperation(firstNumber, secondNumber, op))
+            {
+                Console.WriteLine($"Your answer was correct. Type any key for the next question.");
+                score++;
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"Your answer was incorrect.");
+                Console.ReadLine();
+            }
+        }
+
+        sw.Stop();
+        TimeSpan timeToCompletion = sw.Elapsed;
+        string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
+
+        Helpers.ShowFinalResult(score, numOfQuestions, time);
+
+        Helpers.AddToHistory(score, GameType.Random, timeToCompletion, numOfQuestions);
+    }
     internal void DivisionGame(string message)
     {
         Stopwatch sw = Stopwatch.StartNew();
@@ -41,7 +90,7 @@ internal class GameEngine
                 Console.ReadLine();
             }
         }
-        
+
         sw.Stop();
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
@@ -57,7 +106,6 @@ internal class GameEngine
 
         Console.WriteLine(message);
 
-        var random = new Random();
         var score = 0;
 
         var difficulty = Helpers.GetGameDifficulty();
@@ -107,7 +155,6 @@ internal class GameEngine
 
         Console.WriteLine(message);
 
-        var random = new Random();
         var score = 0;
 
         var difficulty = Helpers.GetGameDifficulty();
@@ -157,7 +204,6 @@ internal class GameEngine
 
         Console.WriteLine(message);
 
-        var random = new Random();
         var score = 0;
 
         var difficulty = Helpers.GetGameDifficulty();

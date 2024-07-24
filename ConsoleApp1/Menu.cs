@@ -22,6 +22,7 @@ public class Menu
                              S - Subtraction
                              M - Multiplication
                              D - Division
+                             R - Random
                              Q - Quit the program");
             Console.WriteLine("---------------------------------------------");
 
@@ -43,6 +44,9 @@ public class Menu
                     break;
                 case "d":
                     engine.DivisionGame("Division game");
+                    break;
+                case "r":
+                    engine.RandomGame("Random game");
                     break;
                 case "q":
                     Console.WriteLine("Goodbye");
