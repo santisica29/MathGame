@@ -10,6 +10,7 @@ internal class Game
 
     internal DateTime Date { get; set; }
     internal int Score { get; set; }
+    internal int NumOfQ {  get; set; }
     internal GameType Type { get; set; }
     internal GameDifficulty Difficulty { get; set; }
     internal TimeSpan Time { get; set; }

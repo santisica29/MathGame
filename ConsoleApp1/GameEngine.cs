@@ -12,7 +12,9 @@ internal class GameEngine
 
         var score = 0;
 
-        for (int i = 0; i < 5; i++)
+        int numOfQuestions = Helpers.GetNumberOfQuestions();
+
+        for (int i = 0; i < numOfQuestions; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -44,10 +46,9 @@ internal class GameEngine
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
 
-        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
-        Console.ReadLine();
+        Helpers.ShowFinalResult(score, numOfQuestions, time);
 
-        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion, numOfQuestions);
 
     }
     internal void MultiplicationGame(string message)
@@ -60,8 +61,9 @@ internal class GameEngine
         var score = 0;
 
         var difficulty = Helpers.GetGameDifficulty();
+        int numOfQuestions = Helpers.GetNumberOfQuestions();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < numOfQuestions; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -94,10 +96,9 @@ internal class GameEngine
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
 
-        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
-        Console.ReadLine();
+        Helpers.ShowFinalResult(score, numOfQuestions, time);
 
-        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion, numOfQuestions);
 
     }
     internal void SubtractionGame(string message)
@@ -110,8 +111,9 @@ internal class GameEngine
         var score = 0;
 
         var difficulty = Helpers.GetGameDifficulty();
+        int numOfQuestions = Helpers.GetNumberOfQuestions();
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < numOfQuestions; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -144,10 +146,9 @@ internal class GameEngine
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
 
-        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
-        Console.ReadLine();
+        Helpers.ShowFinalResult(score, numOfQuestions, time);
 
-        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion, numOfQuestions);
 
     }
     internal void AdditionGame(string message)
@@ -161,7 +162,9 @@ internal class GameEngine
 
         var difficulty = Helpers.GetGameDifficulty();
 
-        for (int i = 0; i < 5; i++)
+        int numOfQuestions = Helpers.GetNumberOfQuestions();
+
+        for (int i = 0; i < numOfQuestions; i++)
         {
             Console.Clear();
             Console.WriteLine(message);
@@ -194,10 +197,9 @@ internal class GameEngine
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
 
-        Console.WriteLine($"Game over. Your final score is {score}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
-        Console.ReadLine();
+        Helpers.ShowFinalResult(score, numOfQuestions, time);
 
-        Helpers.AddToHistory(score, GameType.Division, timeToCompletion);
+        Helpers.AddToHistory(score, GameType.Division, timeToCompletion, numOfQuestions);
     }
 
     // internal accesibilty means that you can access the class with their methods from anywhere inside the project

@@ -40,7 +40,7 @@ internal class Helpers
 
     internal static void ViewPrevGames()
     {
-        var gamesToShow = games.OrderByDescending(x => x.Score);
+        var gamesToShow = games.OrderByDescending(x => x.Date);
 
         if (gamesToShow.Count() == 0)
         {
@@ -56,7 +56,7 @@ internal class Helpers
         {
             string time = Helpers.FormatTimeSpanToStr(game.Time);
 
-            Console.WriteLine($"{game.Date}: {time} - {game.Type}: {game.Score} pts");
+            Console.WriteLine($"{game.Date}: {time} - {game.Type}: {game.Score}/{game.NumOfQ} pts");
         }
 
         Console.WriteLine("--------------------------\n");
@@ -65,18 +65,25 @@ internal class Helpers
 
     }
 
-    internal static void AddToHistory(int score, GameType typeGame, TimeSpan time)
+    internal static void AddToHistory(int score, GameType typeGame, TimeSpan time, int numOfQ)
     {
         games.Add(new Game
         {
             Date = DateTime.Now,
             Score = score,
             Type = typeGame,
-            Time = time
+            Time = time,
+            NumOfQ = numOfQ
         });
         // char.ToUpper(typeGame[0])+typeGame.Substring(1) makes typegame first letter string uppercase
     }
 
+    internal static void ShowFinalResult(int score, int numOfQ, string time)
+    {
+        Console.WriteLine($"Game over. Your final score is {score}/{numOfQ}.\nIt took you {time} to finish the game. \nPress any key to go back to the main menu.");
+        Console.ReadLine();
+    }
+    
 
     internal static int[] GetDivisionNumbers()
     {
@@ -107,12 +114,12 @@ internal class Helpers
         int firstNumber = 0;
         int secondNumber = 0;
 
-        if (string.Compare(gameDifficulty, GameDifficulty.Easy.ToString(),StringComparison.OrdinalIgnoreCase) == 0)
+        if (string.Compare(gameDifficulty, GameDifficulty.Easy.ToString(), StringComparison.OrdinalIgnoreCase) == 0)
         {
             firstNumber = random.Next(1, 9);
             secondNumber = random.Next(1, 9);
         }
-        else if (string.Equals(gameDifficulty,GameDifficulty.Medium.ToString(), StringComparison.OrdinalIgnoreCase))
+        else if (string.Equals(gameDifficulty, GameDifficulty.Medium.ToString(), StringComparison.OrdinalIgnoreCase))
         {
             firstNumber = random.Next(1, 50);
             secondNumber = random.Next(1, 50);
@@ -171,5 +178,31 @@ internal class Helpers
             (int)ts.Minutes, ts.Seconds);
 
         return timeInString;
+    }
+
+    internal static int GetNumberOfQuestions()
+    {
+        bool flag = false;
+        var result = "";
+
+        while (!flag)
+        {
+            Console.Clear();
+            Console.WriteLine("Select the number of questions you want to get asked.\nPick from 3 - 10\n");
+            result = Console.ReadLine();
+
+            if (string.IsNullOrEmpty(result) || !Int32.TryParse(result, out _) || (int.Parse(result) < 3 || int.Parse(result) > 10))
+            {
+                Console.WriteLine("Invalid input. Try again.");
+            }
+            else
+            {
+                Console.WriteLine($"You will be asked {result} questions. Good luck!");
+                flag = true;
+            }
+            Console.ReadLine();
+        }
+
+        return int.Parse(result);
     }
 }
