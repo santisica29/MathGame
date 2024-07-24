@@ -34,19 +34,19 @@ public class Menu
                     Helpers.ViewPrevGames();
                     break;
                 case "a":
-                    engine.AdditionGame("Addition game");
+                    engine.Game('+',"Addition game");
                     break;
                 case "s":
-                    engine.SubtractionGame("Subtraction game");
+                    engine.Game('-',"Subtraction game");
                     break;
                 case "m":
-                    engine.MultiplicationGame("Multiplication game");
+                    engine.Game('*',"Multiplication game");
                     break;
                 case "d":
-                    engine.DivisionGame("Division game");
+                    engine.Game('/',"Division game");
                     break;
                 case "r":
-                    engine.RandomGame("Random game");
+                    engine.Game('r',"Random game");
                     break;
                 case "q":
                     Console.WriteLine("Goodbye");

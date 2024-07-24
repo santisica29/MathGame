@@ -256,4 +256,29 @@ internal class Helpers
 
         return Helpers.GetRandomNumbers(difficulty);
     }
+
+    internal static GameType GetGameType(char op)
+    {
+        GameType gameType = GameType.Multiplication;
+
+        switch (op)
+        {
+            case '*':
+                gameType = GameType.Multiplication;
+                break;
+            case '+':
+                gameType = GameType.Addition;
+                break;
+            case '-':
+                gameType = GameType.Substraction;
+                break;
+            case '/':
+                gameType = GameType.Division;
+                break;
+            default:
+                break;
+        }
+
+        return gameType;
+    }
 }
