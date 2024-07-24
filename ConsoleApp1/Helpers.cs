@@ -246,5 +246,14 @@ internal class Helpers
 
         return op;
     }
-    
+
+    internal static int[] GetNumbersForGame(char op, string difficulty)
+    {
+        if (op == '/')
+        {
+            return Helpers.GetDivisionNumbers();
+        }
+
+        return Helpers.GetRandomNumbers(difficulty);
+    }
 }

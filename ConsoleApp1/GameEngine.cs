@@ -6,6 +6,7 @@ namespace ConsoleApp1;
 
 internal class GameEngine
 {
+
     internal void RandomGame(string message)
     {
         Stopwatch sw = Stopwatch.StartNew();
@@ -24,7 +25,7 @@ internal class GameEngine
             
             char op = Helpers.GetRandomTypeOfGame();
 
-            var numbers = Helpers.GetRandomNumbers(difficulty);
+            int[] numbers = Helpers.GetNumbersForGame(op, difficulty);
 
             int firstNumber = numbers[0];
             int secondNumber = numbers[1];
