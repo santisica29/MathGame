@@ -6,7 +6,7 @@ namespace ConsoleApp1;
 
 internal class GameEngine
 {
-    internal void Game(char op, string message)
+    internal void NewGame(char op, string message)
     {
         if (op == 'r')
             RandomGame(message);
@@ -105,11 +105,16 @@ internal class GameEngine
         sw.Stop();
         TimeSpan timeToCompletion = sw.Elapsed;
         string time = Helpers.FormatTimeSpanToStr(timeToCompletion);
-
+        
         Helpers.ShowFinalResult(score, numOfQuestions, time);
 
         Helpers.AddToHistory(score, GameType.Random, timeToCompletion, numOfQuestions);
     }
+    /*
+     * I'm keeping the functions so I can show I worked on the code
+     * Ultimately decided to keep one function that can play every game instead of 4 different functions
+     * It makes the code cleaner.
+     * 
     internal void DivisionGame(string message)
     {
         Stopwatch sw = Stopwatch.StartNew();
@@ -301,7 +306,7 @@ internal class GameEngine
         Helpers.ShowFinalResult(score, numOfQuestions, time);
 
         Helpers.AddToHistory(score, GameType.Division, timeToCompletion, numOfQuestions);
-    }
+    }*/
 
     // internal accesibilty means that you can access the class with their methods from anywhere inside the project
     // keep in mind a solution can have many projects
